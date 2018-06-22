@@ -1,0 +1,24 @@
+body{
+	background-color: #f7f8f9;
+}
+h2{
+	color: white;
+}
+caption{
+	caption-side: top;
+	text-align: center;
+}
+tbody{
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+.padding_top{
+	padding-top: 25px;
+}
+
+#content2{
+	display: none;
+}
+.rounded{
+	background:#68b1f2;
+}

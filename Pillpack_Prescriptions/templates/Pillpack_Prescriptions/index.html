@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title> Medications </title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static "Pillpack_Prescriptions/css/style.css" %}">
+	<script src="{% static "Pillpack_Prescriptions/js/jquery-3.3.1.js" %}"></script>
+	<script src="{% static "Pillpack_Prescriptions/js/scripts.js" %}"></script>
+
+</head>
+<body >
+	<div class="container-fluid">
+		<div class="rounded">
+	 		<div class="row d-flex justify-content-center">
+	 			<h2 > Medications Picker </h2>
+	 		</div>
+ 		</div>
+	</div>
+	<div class="container-fluid">
+	 	<div class="row d-flex justify-content-center">
+	 		<div class="padding_top">
+
+	 			<img src= "{% static "Pillpack_Prescriptions/images/Pillpack_logo.png" %}" class="img-fluid" alt="Responsive image">
+	 		</div>
+	 	</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row d-flex justify-content-center">
+			<div class="padding_top" id="toggle">
+				<span>
+					<button type="button" class="btn btn-info">Needs Subs</button>
+				</span>
+				<span>
+					<button type="button" class="btn btn-info">Updates</button>
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid padding_top"  id="content1">
+		<table class="table table-striped">
+			<caption > Prescription that are branded and require substitutes </caption>
+		    <thead>
+		      <tr>
+		        <th>Prescription Id</th>
+		        <th>Medication Id</th>
+		        <th>Description</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    {% for prescription in  prescriptions_needing_sub %}
+		      <tr>
+		        <td>{{prescription.prescription_id}}</td>
+		        <td>{{prescription.medication_id}}</td>
+		        <td>{{prescription.description}}</td>
+		      </tr>
+		      {% endfor %}
+		    </tbody>
+  		</table>
+	</div>
+	<div class="container-fluid padding_top" id="content2">
+		<table class="table table-striped">
+			<caption > Prescription that are branded and have updates available </caption>
+		    <thead>
+		      <tr>
+		        <th>Prescription Id</th>
+		        <th>Updated Medication Id</th>
+		      </tr>
+		    </thead>
+		    <tbody>
+		    {% for update in  prescription_update %}
+		      <tr>
+		        <td>{{update.prescription_id}}</td>
+		        <td>{{update.medication_id}}</td>
+		      </tr>
+		      {% endfor %}
+		    </tbody>
+  		</table>
+	</div>	
+</body>
+</html>
