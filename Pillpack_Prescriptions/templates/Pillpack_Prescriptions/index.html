@@ -49,6 +49,7 @@
 		      </tr>
 		    </thead>
 		    <tbody>
+		    {% load set%}
 		    {% set count = 1%}
 		    {% for prescription in  prescriptions_needing_sub %}
 		      <tr>
