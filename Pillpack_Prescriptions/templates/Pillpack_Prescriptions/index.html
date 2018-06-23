@@ -42,18 +42,22 @@
 			<caption > Prescription that are branded and require substitutes </caption>
 		    <thead>
 		      <tr>
+		      	<th>Serial Number</th>
 		        <th>Prescription Id</th>
 		        <th>Medication Id</th>
 		        <th>Description</th>
 		      </tr>
 		    </thead>
 		    <tbody>
+		    {% set count = 1%}
 		    {% for prescription in  prescriptions_needing_sub %}
 		      <tr>
+		      	<td>{{count}}</td>
 		        <td>{{prescription.prescription_id}}</td>
 		        <td>{{prescription.medication_id}}</td>
 		        <td>{{prescription.description}}</td>
 		      </tr>
+		      {% set count = count + 1 %}
 		      {% endfor %}
 		    </tbody>
   		</table>
@@ -63,16 +67,19 @@
 			<caption > Prescription that are branded and have updates available </caption>
 		    <thead>
 		      <tr>
+		      	<th>Serial Number</th>
 		        <th>Prescription Id</th>
 		        <th>Updated Medication Id</th>
 		      </tr>
 		    </thead>
 		    <tbody>
+		    {% set count = 1%}
 		    {% for update in  prescription_update %}
 		      <tr>
 		        <td>{{update.prescription_id}}</td>
 		        <td>{{update.medication_id}}</td>
 		      </tr>
+		      {% set count = count + 1%}
 		      {% endfor %}
 		    </tbody>
   		</table>

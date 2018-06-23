@@ -36,7 +36,8 @@ def index(request):
 
 	replace_dict.clear()
 
-	# with open("Updates.json", 'w') as JSONfile:
+	#Create a JSON file for the all the updates 
+	# with open("prescription_updates.json", 'w') as JSONfile:
 	# 	json.dump(prescription_update, JSONfile, indent=4)
 
 	# Add all the medications that are branded to a dictionary
@@ -56,7 +57,7 @@ def index(request):
 				'description': branded_medications[prescription['medication_id']]['description']
 			}
 			prescriptions_needing_sub.append(needs_sub)
-			
+
 	#Create a context that holds the data that we want to render to our app
 	contexts = {'prescriptions_needing_sub': prescriptions_needing_sub, 'prescription_update':prescription_update}
 
