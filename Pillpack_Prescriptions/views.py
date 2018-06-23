@@ -3,6 +3,7 @@ import requests
 import json
 # Create your views here.
 def index(request):
+	#Get all the medication data from the api and convert it to usable JSON format
 	medication_response = requests.get('http://api-sandbox.pillpack.com/medications')
 	medications = medication_response.json()
 
@@ -23,26 +24,30 @@ def index(request):
 			replace_dict[same_rxcui_dict[key]['branded'][0]] = same_rxcui_dict[key]['generic'][0]
 
 	same_rxcui_dict.clear()
+	#Get all the prescriptions from the api and convert it to the usable JSON format
 	prescription_response = requests.get('http://api-sandbox.pillpack.com/prescriptions')
 	prescriptions = prescription_response.json()
 
-	#For each prescription check if update is available and if available add it to updates
+	#For each prescription check if substitute/update is available and if available add it to updates
 	prescription_update = []
 	for prescription in prescriptions:
 		if prescription['medication_id'] in replace_dict:
 			prescription_update.append({'medication_id':replace_dict[prescription['medication_id']], 'prescription_id':prescription['id']})
 
 	replace_dict.clear()
+
 	# with open("Updates.json", 'w') as JSONfile:
 	# 	json.dump(prescription_update, JSONfile, indent=4)
 
+	# Add all the medications that are branded to a dictionary
 	branded_medications = {}
 	for medication in medications:
 		if not medication['generic']:
 			branded_medications[medication['id']]=medication
-
+	
+	#
 	prescriptions_needing_sub = []
-	# available_subs = []
+	#Add all the prescriptions that need substitutions to a list
 	for prescription in prescriptions:
 		if prescription['medication_id'] in branded_medications:
 			needs_sub={
@@ -51,7 +56,8 @@ def index(request):
 				'description': branded_medications[prescription['medication_id']]['description']
 			}
 			prescriptions_needing_sub.append(needs_sub)
-
+			
+	#Create a context that holds the data that we want to render to our app
 	contexts = {'prescriptions_needing_sub': prescriptions_needing_sub, 'prescription_update':prescription_update}
 
 	return render(request, 'Pillpack_Prescriptions/index.html', contexts)
