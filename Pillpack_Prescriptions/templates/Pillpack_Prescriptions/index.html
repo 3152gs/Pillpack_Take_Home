@@ -49,16 +49,13 @@
 		      </tr>
 		    </thead>
 		    <tbody>
-		    {% load set%}
-		    {% set count = 1%}
 		    {% for prescription in  prescriptions_needing_sub %}
 		      <tr>
-		      	<td>{{count}}</td>
+		      	<td>{{loop.index}}</td>
 		        <td>{{prescription.prescription_id}}</td>
 		        <td>{{prescription.medication_id}}</td>
 		        <td>{{prescription.description}}</td>
 		      </tr>
-		      {% set count = count + 1 %}
 		      {% endfor %}
 		    </tbody>
   		</table>
@@ -74,13 +71,11 @@
 		      </tr>
 		    </thead>
 		    <tbody>
-		    {% set count = 1%}
 		    {% for update in  prescription_update %}
 		      <tr>
 		        <td>{{update.prescription_id}}</td>
 		        <td>{{update.medication_id}}</td>
 		      </tr>
-		      {% set count = count + 1%}
 		      {% endfor %}
 		    </tbody>
   		</table>
