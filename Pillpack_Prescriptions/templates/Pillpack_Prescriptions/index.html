@@ -51,7 +51,7 @@
 		    <tbody>
 		    {% for prescription in  prescriptions_needing_sub %}
 		      <tr>
-		      	<td>{{loop.index}}</td>
+		      	<td>{{forloop.counter}}</td>
 		        <td>{{prescription.prescription_id}}</td>
 		        <td>{{prescription.medication_id}}</td>
 		        <td>{{prescription.description}}</td>
@@ -73,6 +73,7 @@
 		    <tbody>
 		    {% for update in  prescription_update %}
 		      <tr>
+		       <td>{{forloop.counter}}</td>
 		        <td>{{update.prescription_id}}</td>
 		        <td>{{update.medication_id}}</td>
 		      </tr>
