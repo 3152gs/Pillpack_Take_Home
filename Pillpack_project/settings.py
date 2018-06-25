@@ -25,7 +25,7 @@ SECRET_KEY = 'a&t$6(5d3^2hdh1_xc9@6(gzj8(hnxrtf@h%t2(ggt2cy^3=bs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pillpackprescriptions.herokuapp.com']
+ALLOWED_HOSTS = ['pillpackprescriptions.herokuapp.com', 'localhost']
 
 
 # Application definition

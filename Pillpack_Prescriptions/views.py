@@ -37,9 +37,9 @@ def index(request):
 	replace_dict.clear()
 
 	#Create a JSON file for the all the updates 
-	# with open("prescription_updates.json", 'w') as JSONfile:
-	# 	json.dump(prescription_update, JSONfile, indent=4)
-
+	with open("prescription_updates.json", 'w') as JSONfile:
+		json.dump(prescription_update, JSONfile, indent=4)
+	
 	# Add all the medications that are branded to a dictionary
 	branded_medications = {}
 	for medication in medications:
